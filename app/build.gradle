@@ -64,5 +64,5 @@ dependencies {
     compile 'com.google.code.gson:gson:2.3.1'
     compile 'com.android.support:design:24.2.1'
     compile 'org.javassist:javassist:3.20.0-GA'
-    compile project(path: ':patch')
+    compile 'com.meituan.robust:robust:0.4.90'
 }
