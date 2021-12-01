@@ -51,7 +51,6 @@ class ConvertUtils {
         }
         def cost = (System.currentTimeMillis() - startTime) / 1000
         println "read all class file cost $cost second"
-
         directoryClassNames.each {
             try {
                 allClass.add(directoryClassPool.get(it));
