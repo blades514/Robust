@@ -2,15 +2,19 @@
 
 buildscript {
     repositories {
-        mavenLocal()
+        maven {
+            url 'repo/'
+        }
+        mavenCentral()
         jcenter()
+        maven { url 'https://dl.google.com/dl/android/maven2/'}
+        maven { url 'http://developer.huawei.com/repo/' }
+        maven { url 'https://repo1.maven.org/maven2/' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.0'
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-        classpath 'com.meituan.robust:gradle-plugin:0.4.96'
-        classpath 'com.meituan.robust:auto-patch-plugin:0.4.96'
+        classpath 'com.android.tools.build:gradle:3.2.0'
+        classpath 'com.chinaunicom.robust:gradle-plugin:0.4.99'
+        classpath 'com.chinaunicom.robust:auto-patch-plugin:0.4.99'
         classpath 'me.tatarka:gradle-retrolambda:3.2.0'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.3'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
@@ -23,11 +27,11 @@ configurations.all {
 }
 allprojects {
     repositories {
-        mavenLocal()
         maven {
-            url "http://depot.sankuai.com/nexus/content/groups/public/"
+            url '../repo/'
         }
         jcenter()
+        maven { url 'https://dl.google.com/dl/android/maven2/'}
     }
     tasks.withType(JavaCompile) { options.encoding = "UTF-8" }
 }

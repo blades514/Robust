@@ -1,5 +1,8 @@
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
+//apply plugin: 'com.github.dcendents.android-maven'
+//apply plugin: 'com.jfrog.bintray'
+apply plugin:'maven-publish'
+apply plugin:'maven'
+
 group = GROUP
 version = VERSION_NAME
 
@@ -43,23 +46,26 @@ artifacts {
 }
 
 uploadArchives {
-    repositories.mavenDeployer {
-        repository(url: repositoryUrl) {
-            authentication(userName: getPropertyFromLocalProperties("USER"), password: getPropertyFromLocalProperties("PASSWORD"))
+    repositories {
+        mavenDeployer {
+            //本地的Maven地址设置为D:/repos
+            repository(url: uri('../repo'))
+//            repository(url: uri('/Users/wangjisheng/Dev/Git/android/repository'))
         }
     }
 }
-bintray {
-    user = getPropertyFromLocalProperties("bintray.user")
-    key = getPropertyFromLocalProperties("bintray.apikey")
-    configurations = ['archives']
-    pkg {
-        repo = 'maven'
-        name = "${project.group}:${project.name}"
-        userOrg = 'meituan'
-        licenses = ['Apache-2.0']
-        websiteUrl = 'http://tech.meituan.com/android_autopatch.html'
-        vcsUrl = 'https://github.com/Meituan-Dianping/Robust'
-        publish = true
-    }
-}
+
+//bintray {
+//    user = getPropertyFromLocalProperties("bintray.user")
+//    key = getPropertyFromLocalProperties("bintray.apikey")
+//    configurations = ['archives']
+//    pkg {
+//        repo = 'maven'
+//        name = "${project.group}:${project.name}"
+//        userOrg = 'meituan'
+//        licenses = ['Apache-2.0']
+//        websiteUrl = 'http://tech.meituan.com/android_autopatch.html'
+//        vcsUrl = 'https://github.com/Meituan-Dianping/Robust'
+//        publish = true
+//    }
+//}
